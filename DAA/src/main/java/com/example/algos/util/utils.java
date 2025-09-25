@@ -1,4 +1,3 @@
-
 package com.example.algos.util;
 
 import java.util.Arrays;
@@ -8,3 +7,4 @@ public class Utils {
         System.out.println(Arrays.toString(arr));
     }
 }
+
