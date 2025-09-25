@@ -1,6 +1,11 @@
-import java.util.*;
+package com.example.algos;
 
-public class TestSelect {
+import com.example.algos.select.Select;
+import java.util.Arrays;
+import java.util.Random;
+
+
+public class testselect {
     public static void main(String[] args) {
         Random rand = new Random();
         boolean allGood = true;
@@ -16,7 +21,7 @@ public class TestSelect {
             Arrays.sort(copy);
             int expected = copy[k];
 
-            int result = DeterministicSelect.select(arr, k);
+            int result = Select.sort(arr);
 
             if (result != expected) {
                 System.out.println("Mismatch! k=" + k + " expected " + expected + " got " + result);
