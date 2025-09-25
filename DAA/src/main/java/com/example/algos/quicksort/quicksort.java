@@ -1,16 +1,20 @@
 package com.example.algos.quicksort;
 
 public class QuickSort {
+    private static int maxDepth; // to track recursion depth
+
     public static void sort(int[] arr) {
+        maxDepth = 0;
         if (arr == null || arr.length <= 1) return;
-        quickSort(arr, 0, arr.length - 1);
+        quickSort(arr, 0, arr.length - 1, 0);
     }
 
-    private static void quickSort(int[] arr, int low, int high) {
+    private static void quickSort(int[] arr, int low, int high, int depth) {
         if (low < high) {
+            maxDepth = Math.max(maxDepth, depth);
             int pi = partition(arr, low, high);
-            quickSort(arr, low, pi - 1);
-            quickSort(arr, pi + 1, high);
+            quickSort(arr, low, pi - 1, depth + 1);
+            quickSort(arr, pi + 1, high, depth + 1);
         }
     }
 
@@ -31,5 +35,9 @@ public class QuickSort {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
+    }
+
+    public static int getMaxRecursionDepth() {
+        return maxDepth;
     }
 }
