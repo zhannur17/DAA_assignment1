@@ -1,6 +1,12 @@
-TZimport java.util.*;
+package com.example.algos;
+
+import com.example.algos.closest.ClosestPair;
+import com.example.algos.closest.ClosestPair.Point;
+
+import java.util.Random;
 
 public class TestClosestPair {
+
     private static double bruteForce(Point[] points) {
         double minDist = Double.POSITIVE_INFINITY;
         for (int i = 0; i < points.length; i++) {
@@ -27,13 +33,13 @@ public class TestClosestPair {
     public static void main(String[] args) {
         for (int n = 10; n <= 2000; n *= 10) {
             Point[] pts = randomPoints(n);
-            double fast = ClosestPair.closestPair(pts.clone());
+            double fast = ClosestPair.closest(pts.clone());
             double slow = bruteForce(pts);
             System.out.println("n=" + n + " validated: " + (Math.abs(fast - slow) < 1e-9));
         }
 
         Point[] large = randomPoints(100000);
-        double result = ClosestPair.closestPair(large);
+        double result = ClosestPair.closest(large);
         System.out.println("Large test n=100000 result=" + result);
     }
 }
